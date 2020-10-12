@@ -70,7 +70,7 @@ parciais(){
  
 
 componentDidMount(){
-    this.timer =  setInterval( () => this.incrementar(), 1000)
+    this.timer =  setInterval( () => this.incrementar(), 100)
 }
 
 
