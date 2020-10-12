@@ -1,6 +1,8 @@
 import React from 'react'
 import './App.css';
 import Botao from './Botao';
+import  LabelCronometro from './LabelCronometro' 
+
 
 
 class Contador extends React.Component{
@@ -10,18 +12,21 @@ class Contador extends React.Component{
         segundos : 0,
         minutos : 0,
         stop: false,
-        nameStop: "Stop"
+        nameStop: "Stop",
+        parcial: " "
     }
 
 }
 incrementar(){
     this.setState(
         (state) =>{
-            if (state.segundos >=5){
-                this.zerar();
-                this.incrementarMinutos()
-            } 
-            return({segundos: state.segundos + 1})
+            if(this.state.stop==false){
+                if (state.segundos >=5){
+                    this.zerar();
+                    this.incrementarMinutos()
+                } 
+                return({segundos: state.segundos + 1})
+        }
         }
     )
 }
@@ -48,13 +53,19 @@ pararTempo()
     })
     if(this.state.stop)
         {this.setState({
-            nameStop : "Play"
+            nameStop : "Stop"
         })}
         else 
             {this.setState({
-                nameStop:  "Stop"
+                nameStop:  "Play"
             })}
         
+}
+parciais(){
+    let p = this.state.minutos +":" + this.state.segundos
+        this.setState({
+            parcial : this.state.parcial + "->" + p
+        })
 }
  
 
@@ -71,6 +82,8 @@ componentDidMount(){
             <h1>{this.state.minutos}:{this.state.segundos}</h1>
             <Botao onClick ={()=> { this.zerarCronometro()}} label ="Zerrar"/>
             <Botao onClick ={()=> { this.pararTempo()}} label ={this.state.nameStop}/>
+            <Botao onClick ={()=> { this.parciais()}} label ="Parcial"/>
+            <LabelCronometro name={this.state.parcial}/>
         </div>
     )
 }
