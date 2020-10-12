@@ -14,10 +14,17 @@ class Contador extends React.Component{
         hora: 0,
         stop: false,
         nameStop: "Stop",
-        parcial: " "
+        parcial: " ",
+        relogio:""
     }
 
 
+}
+
+relogio(){
+    var moment = require('moment-timezone')
+    let localTime = moment( ).tz("Brazil/Brasilia").format("HH:mm:ss").toString()
+    this.setState({relogio: localTime})
 }
 incrementar(){
     this.setState(
@@ -85,6 +92,8 @@ parciais(){
 
 componentDidMount(){
     this.timer =  setInterval( () => this.incrementar(), 1000)
+    this.timer2 =  setInterval( () => this.relogio(), 1000)
+
 }
 
 
@@ -98,6 +107,7 @@ componentDidMount(){
             <Botao onClick ={()=> { this.pararTempo()}} label ={this.state.nameStop}/>
             <Botao onClick ={()=> { this.parciais()}} label ="Parcial"/>
             <LabelCronometro name={this.state.parcial}/>
+            <LabelCronometro name={this.state.relogio}/>
         </div>
     )
 }
