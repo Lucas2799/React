@@ -21,7 +21,7 @@ incrementar(){
     this.setState(
         (state) =>{
             if(this.state.stop==false){
-                if (state.segundos >=5){
+                if (state.segundos >=100){
                     this.zerar();
                     this.incrementarMinutos()
                 } 
@@ -70,7 +70,7 @@ parciais(){
  
 
 componentDidMount(){
-    this.timer =  setInterval( () => this.incrementar(), 100)
+    this.timer =  setInterval( () => this.incrementar(), 10)
 }
 
 
