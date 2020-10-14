@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css';
 import Botao from './Botao';
 import  LabelCronometro from './LabelCronometro' 
+import  LabelRelogio from './LabelRelogio'
 
 
 
@@ -15,17 +16,31 @@ class Contador extends React.Component{
         stop: false,
         nameStop: "Stop",
         parcial: " ",
-        relogio:""
+        relogio:" ",
+        cont: " ",
+        local:" ",
+        los :" "
     }
 
 
 }
 
+
 relogio(){
-    var moment = require('moment-timezone')
-    let localTime = moment( ).tz("Brazil/Brasilia").format("HH:mm:ss").toString()
-    this.setState({relogio: localTime})
+        var moment = require('moment-timezone')
+        let localTime = moment( ).tz("Brazil/Brasilia").format("HH:mm:ss").toString()
+        this.setState({relogio: localTime})
+      
 }
+
+
+los(){
+    var moment = require('moment-timezone')
+    let localTime = moment( ).tz("America/Los_Angeles").format("HH:mm:ss").toString()
+    this.setState({los: localTime})
+}
+
+
 incrementar(){
     this.setState(
         (state) =>{
@@ -87,7 +102,18 @@ parciais(){
         this.setState({
             parcial : this.state.parcial + "->" + p
         })
+       
 }
+
+diferenca(){
+    let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo
+        this.setState({
+            diferenca : (this.state.hora +":" +this.state.minuto + ":" + this.state.segundo) 
+        })
+       
+}
+
+
  
 
 componentDidMount(){
@@ -101,13 +127,17 @@ componentDidMount(){
 
  render(){
     return(
+       
         <div>
             <h1>{this.state.hora}:{this.state.minuto}:{this.state.segundo}</h1>
             <Botao onClick ={()=> { this.zerarCronometro()}} label ="Zerrar"/>
             <Botao onClick ={()=> { this.pararTempo()}} label ={this.state.nameStop}/>
             <Botao onClick ={()=> { this.parciais()}} label ="Parcial"/>
             <LabelCronometro name={this.state.parcial}/>
-            <LabelCronometro name={this.state.relogio}/>
+            
+            <h1>Horario atual!</h1>
+            <LabelRelogio name={this.state.relogio}/>
+            
         </div>
     )
 }
