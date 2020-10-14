@@ -23,8 +23,10 @@ function App() {
       <Relogiolos/>
       <RelogioAfrica/>
       <RelogioSyowa/>
+      
     </div>
   );
 }
+
 
 export default App;

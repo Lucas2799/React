@@ -16,7 +16,7 @@ class RelogioSyowa extends React.Component{
 
     relogio(){
         var moment = require('moment-timezone')
-        let localTime = moment( ).tz("Antartica/Syowa").format("HH:mm:ss").toString()
+        let localTime = moment( ).tz("Antarctica/Syowa").format("HH:mm:ss").toString()
         this.setState({relogio: localTime})
     }
 
