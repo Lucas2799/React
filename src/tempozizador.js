@@ -14,7 +14,7 @@ class Temporizador extends React.Component{
         minuto : 0,
         hora: 0,
         parcial:" ",
-        stop: false
+        stop: true
     }
 
 
@@ -24,7 +24,7 @@ class Temporizador extends React.Component{
     incrementar(){
         this.setState(
             (state) =>{
-                if(this.state.stop === true){
+                if(this.state.stop === false){
                      
                     
                     if (state.segundo >= 60){
@@ -55,20 +55,21 @@ class Temporizador extends React.Component{
         this.setState({hora: this.state.hora + 1})
     }
 
-    pararTempo(){
+    pararTempo()
+{
     this.setState({
         stop :!this.state.stop
     })
     if(this.state.stop)
         {this.setState({
-            nameStop : "Play"
+            nameStop : "Stop"
         })}
         else 
             {this.setState({
-                nameStop:  "Stop"
+                nameStop:  "Play"
             })}
         
-    }
+}
     parciais(){
         let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo
             this.setState({

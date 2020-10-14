@@ -29,6 +29,8 @@ class Relogio extends React.Component{
         return(
         
             <div>
+                <h1>Horario atual!</h1>
+            
                 <LabelRelogio name={this.state.relogio}/>
             </div>
         )
