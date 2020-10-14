@@ -6,6 +6,10 @@ import Temporizador from './tempozizador'
 import Relogio from './Relogio'
 import  LabelCronometro from './LabelCronometro'
 import Botao from './Botao'
+import RelogioSyowa from './RelogioSyowa';
+import  Relogiolos from './RelogioLos'
+import Relogiotokyo from './RelogioTokyo';
+import RelogioAfrica from './RelogioAfrica';
 
 
 function App() {
@@ -16,6 +20,9 @@ function App() {
       <h1>Temporizador</h1>
       <Temporizador/>
       <Relogio/>
+      <Relogiolos/>
+      <RelogioAfrica/>
+      <RelogioSyowa/>
     </div>
   );
 }

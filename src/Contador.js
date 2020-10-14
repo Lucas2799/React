@@ -88,7 +88,7 @@ pararTempo()
 parciais(){
     let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo
         this.setState({
-            parcial : this.state.parcial + "->" + p
+            parcial : this.state.parcial + "➡" + p
         })
        
 }

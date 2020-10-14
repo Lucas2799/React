@@ -4,12 +4,11 @@ import Botao from './Botao';
 import  LabelCronometro from './LabelCronometro' 
 import  LabelRelogio from './LabelRelogio'
 
-class Relogio extends React.Component{
+class RelogioAfrica extends React.Component{
     constructor(props){
     super(props)
     this.state = {
-        relogio:"",
-       
+        relogio:""
     }
 
 
@@ -17,10 +16,10 @@ class Relogio extends React.Component{
 
     relogio(){
         var moment = require('moment-timezone')
-        let localTime = moment( ).tz("Brazil/Brasilia").format("HH:mm:ss").toString()
+        let localTime = moment( ).tz("Antartica/Syowa").format("HH:mm:ss").toString()
         this.setState({relogio: localTime})
     }
-   
+
     componentDidMount(){
         this.timer =  setInterval( () => this.relogio(), 1000)
 
@@ -30,12 +29,11 @@ class Relogio extends React.Component{
         return(
         
             <div>
-                <h1>Horario Local!</h1>
+                <h1>Horario Africa!</h1>
             
                 <LabelRelogio name={this.state.relogio}/>
-                
             </div>
         )
     }
 }
-export default Relogio;
+export default RelogioAfrica;
