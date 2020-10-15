@@ -17,7 +17,6 @@ function App() {
     <div>
       <LabelCronometro name="Cronometro!"/>
       <Contador/>
-      <h1>Temporizador</h1>
       <Temporizador/>
       <Relogio/>
       <Relogiolos/>

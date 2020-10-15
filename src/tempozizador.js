@@ -4,109 +4,150 @@ import Botao from './Botao';
 import  LabelCronometro from './LabelCronometro' 
 import  LabelRelogio from './LabelRelogio'
 
-
-
 class Temporizador extends React.Component{
-    constructor(props){
-    super(props)
-    this.state = {
-        segundo : 0,
-        minuto : 0,
-        hora: 0,
-        parcial:" ",
-        stop: true
+
+    constructor(props)
+    {
+        super(props)
+        this.state = {
+            name: 'Temporizador',
+            horas : 0,
+            minutos: 0,
+            segundos: 0,
+            stop: true,
+            nameStop: "Start"
+        }        
     }
 
-
-}
-
-
-    incrementar(){
-        this.setState(
-            (state) =>{
-                if(this.state.stop === false){
-                     
-                    
-                    if (state.segundo >= 60){
-                        this.zerar();
-                        this.incrementarMinutos()
-                    }
-                    if (state.minuto === 60){
-                        this.incrementarHoras()
-                        this.zerar();
-                    } 
-                
-                    return({segundo: state.segundo + 1})
+    decrementarMinuto(state) 
+    {
+        this.setState(() => { 
+            if(this.state.minutos > 0)
+            { 
+              return {
+                  minutos: state.minutos - 1 
+                }
             }
-            }
-        )
-    }
-    zerar(){
-        this.setState({segundo: 0})
-        this.setState({minuto: 0})
-        
-    }
-
-    incrementarMinutos(){
-        this.setState({minuto: this.state.minuto + 1})
-    }
-
-    incrementarHoras(){
-        this.setState({hora: this.state.hora + 1})
-    }
-
-    pararTempo()
-{
-    this.setState({
-        stop :!this.state.stop
-    })
-    if(this.state.stop)
-        {this.setState({
-            nameStop : "Stop"
-        })}
-        else 
-            {this.setState({
-                nameStop:  "Play"
-            })}
-        
-}
-    parciais(){
-        let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo
-            this.setState({
-                parcial : this.state.parcial + "->" + p
-            })
-           
-    }
-
-    zerarTemporizador(){
-        this.setState({
-            segundo: 0,
-            minuto: 0,
-            hora : 0
         })
     }
 
-    componentDidMount(){
-        this.timer =  setInterval( () => this.incrementar(), 1000)
+    decrementarHora(state) 
+    {
+      this.setState(() => { 
+          if(state.horas > 0)
+          { 
+            return {
+                horas: state.horas - 1 
+              }
+          }
+      })
     }
 
+    timeLose(){ 
+        setTimeout(function() { 
+            alert("Seu tempo terminou!"); 
+        }, 1000);
+    }
 
+    start()
+    {
+        if (this.state.stop === false){
+            this.setState(function (state, props) {
 
+                if(this.state.horas === 0 && this.state.minutos === 0 && this.state.segundos === 0) {
+                    this.setState({
+                        stop: true
+                    })
+                    return (
+                        this.timeLose()
+                    )
+                }
 
-    render(){
-        return(
+                if (state.segundos === 0)
+                {
+                    this.setState({ 
+                        segundos: 59,
+                    })
+                    this.decrementarMinuto(state);
+
+                    if(state.minutos === 0)
+                    {
+                        this.setState({ 
+                            minutos: 59,
+                        })
+                        this.decrementarHora(state)
+                    } 
+                } 
+
+                return({ 
+                    segundos: state.segundos - 1
+                })
+            })
+        }
+    }
+
+    //change input
+    alterarHoras = (event) => {
+        this.setState({
+            horas: event.target.value
+        })
+    }
+    //change input
+    alterarMinutos = (event) => {
+        this.setState({
+            minutos: event.target.value
+        })
+    }
+    //change input
+    alterarSegundos = (event) => {
+        this.setState({
+            segundos: event.target.value
+        })
+    }
+
+    componentDidMount() 
+    {
+      this.timer = setInterval(() => this.start(), 1000)
+    }
+
+    handleSubmit = (e) => {
+        this.setState({
+            stop: !this.state.stop
+        })
+
+        if (this.state.stop)
+        {
+            this.setState({ 
+                nameStop: "Start"
+            })
+        }
+        else
+        {
+            this.setState({ 
+                nameStop: "Stop"
+            })
+        }
         
-            <div>
-                <h1>{this.state.hora}:{this.state.minuto}:{this.state.segundo}</h1>
-                <Botao onClick ={()=> { this.zerarTemporizador()}} label ="Zerrar"/>
-                <Botao onClick ={()=> { this.pararTempo()}} label ={this.state.nameStop}/>
-                <Botao onClick ={()=> { this.parciais()}} label ="Parcial"/>
-                <LabelCronometro name={this.state.parcial}/>
-            </div>
-        )
+        e.preventDefault()
     }
 
-    
+    render() {
+        return (
+            <div className="App-temp">
+                <h1>{this.state.name}</h1>
+                <p>Informe o tempo utilizando o formato <strong>HH:mm:ss</strong> abaixo:</p>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <input type="number" name="horas" placeholder="2h" onChange={this.alterarHoras} />
+                        <input type="number" name="minutos" placeholder="7min" onChange={this.alterarMinutos} />
+                        <input type="number" name="segundos" placeholder="11s" onChange={this.alterarSegundos} />
+                    </div>
+                    <button type="submit">{this.state.nameStop}</button>
+                    <h1>{this.state.horas}h:{this.state.minutos}m:{this.state.segundos}s</h1>
+                </form>
+            </div>
+        )   
+    }
 }
 
 export default Temporizador;
