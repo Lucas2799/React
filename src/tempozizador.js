@@ -133,7 +133,8 @@ class Temporizador extends React.Component{
 
     render() {
         return (
-            <div className="App-temp">
+            
+            <div className="app-temp">
                 <h1>{this.state.name}</h1>
                 <p>Informe o tempo utilizando o formato <strong>HH:mm:ss</strong> abaixo:</p>
                 <form onSubmit={this.handleSubmit}>

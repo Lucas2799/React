@@ -6,7 +6,7 @@ import  LabelRelogio from './LabelRelogio'
 
 
 
-class Contador extends React.Component{
+class Cronometro extends React.Component{
     constructor(props){
     super(props)
     this.state = {
@@ -115,14 +115,21 @@ componentDidMount(){
 
  render(){
     return(
-       
-        <div>
-            <h1>{this.state.hora}:{this.state.minuto}:{this.state.segundo}</h1>
-            <Botao onClick ={()=> { this.zerarCronometro()}} label ="Zerrar"/>
-            <Botao onClick ={()=> { this.pararTempo()}} label ={this.state.nameStop}/>
-            <Botao onClick ={()=> { this.parciais()}} label ="Parcial"/>
-            <LabelCronometro name={this.state.parcial}/>
-            
+       <div className="Cronometro">
+        <div class="container-fluid" >
+            <div class="row">
+                <div class="col-md-3 sidebar cor-fundo">
+                    <ul class="nav nav-sidebar">
+                    <h1>Cronometro</h1>
+                    <h1>{this.state.hora}:{this.state.minuto}:{this.state.segundo}</h1>
+                    <Botao onClick ={()=> { this.zerarCronometro()}} label ="Zerrar"/>
+                    <Botao onClick ={()=> { this.pararTempo()}} label ={this.state.nameStop}/>
+                    <Botao onClick ={()=> { this.parciais()}} label ="Parcial"/>
+                    <LabelCronometro name={this.state.parcial}/>
+                    </ul>
+                </div>
+            </div>
+        </div>
         </div>
     )
 }
@@ -130,4 +137,4 @@ componentDidMount(){
     
 }
 
-export default Contador;
+export default Cronometro;

@@ -16,7 +16,20 @@
   color: rgb(0, 0, 0);
   font-size: 1cm;
 }
+.app-temp{
 
+  color: rgb(0, 0, 0);
+  font-size: 1cm;
+  background-attachment: fixed;
+  background-color: rgba(175, 103, 76, 0.664);
+}
+.Cronometro{
+  background-color: darkblue;
+}
+
+.relogio{
+  background-color: darkkhaki;
+}
 .App-header {
   background-color: #30788570;
   min-height: 100vh;
