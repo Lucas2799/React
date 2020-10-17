@@ -44,18 +44,41 @@ class Relogio extends React.Component{
 
     render(){
         return(
-            <div className="relogio">
-                <h1>Horario Local!</h1>
-                <LabelRelogio name={this.state.relogio}/>
-                <h1>Africa</h1>
-                <LabelRelogio name={this.state.relogio2}/>
-                <h1>Los Angeles</h1>
-                <LabelRelogio name={this.state.relogio3}/>
-                <h1>Syowa</h1>
-                <LabelRelogio name={this.state.relogio4}/>
-                <h1>Tokyo</h1>
-                <LabelRelogio name={this.state.relogio5}/>
-            </div>
+            <div >
+                 <hr/>
+                <div id="rel">
+                   
+                    <h1 id="relogio"><i>Relógios</i></h1>
+                </div>
+            
+                <div id="local">
+                    <h1>Horário Local!</h1>
+                    <LabelRelogio name={this.state.relogio}/>
+                </div>
+                <hr id ="teste"/>
+                
+                <div id="af">
+                    <h1>Horário da Africa</h1>
+                    <LabelRelogio name={this.state.relogio2}/>
+                </div>
+
+                <div id="los">
+                    <h1>Horário de L.Angeles</h1>
+                    <LabelRelogio name={this.state.relogio3}/>
+                </div>
+
+                <div id="syowa">
+                    <h1>Horário de Syowa</h1>
+                    <LabelRelogio name={this.state.relogio4}/>
+                </div>
+
+                <div id="to">
+                    <h1>Horario de Tokyo</h1>
+                    <LabelRelogio name={this.state.relogio5}/>
+                </div>
+
+                </div>
+            
         )
     }
 }

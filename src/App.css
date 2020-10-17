@@ -24,14 +24,75 @@
   background-attachment: fixed;
   
 }
-.Cronometro{
+
+
+#af{
+  position: relative;
+  border-width:2px;
+  width: 350px;
+  height: 100px;
+  left:0px;
+  float: left;
   
 }
-
-.relogio{
- 
- 
+#local{
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)s
 }
+#rel{
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)s
+
+}
+
+#los{
+  position: relative;
+  border-width:2px;
+  width: 350px;
+  height: 100px;
+  left:0px;
+  float: left;
+}
+#lc{
+  position: relative;
+  border-width:2px;
+  width: 350px;
+  height: 100px;
+  left:0px;
+  float: left;
+
+}
+
+#syowa{
+  position: relative;
+  border-width:0px;
+  width: 350px;
+  height: 100px;
+  left:0px;
+  float: left;
+}
+#t{
+  position: relative;
+  border-width:2px;
+  width: 350px;
+  height: 100px;
+  left:0px;
+  float: left;
+}
+
+#teste{
+  color:#ffffffff;
+}
+
+
 .App-header {
   background-color: #30788570;
   min-height: 100vh;
