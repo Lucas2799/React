@@ -135,8 +135,9 @@ class Temporizador extends React.Component{
         return (
             
             <div className="app-temp">
-                <h1>{this.state.name}</h1>
-                <p>Informe o tempo utilizando o formato <strong>HH:mm:ss</strong> abaixo:</p>
+                
+                <h3>{this.state.name}</h3>
+                <p>Informe o tempo utilizando a forma<strong>HH:mm:ss</strong> abaixo:</p>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input type="number" name="horas" placeholder="2h" onChange={this.alterarHoras} />
@@ -144,7 +145,7 @@ class Temporizador extends React.Component{
                         <input type="number" name="segundos" placeholder="11s" onChange={this.alterarSegundos} />
                     </div>
                     <button type="submit">{this.state.nameStop}</button>
-                    <h1>{this.state.horas}h:{this.state.minutos}m:{this.state.segundos}s</h1>
+                    <p>{this.state.horas}h:{this.state.minutos}m:{this.state.segundos}s</p>
                 </form>
             </div>
         )   

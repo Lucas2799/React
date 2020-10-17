@@ -10,12 +10,13 @@ class Cronometro extends React.Component{
     constructor(props){
     super(props)
     this.state = {
+        milisegundos: 0,
         segundo : 0,
         minuto : 0,
         hora: 0,
         stop: true,
-        nameStop: "Stop",
-        parcial: " "
+        nameStop: "Play",
+        parcial: " ",
     }
 
 
@@ -53,6 +54,23 @@ zerar(){
     this.setState({minuto: 0})
     
 }
+functionMilisegundos()
+    {
+      if (this.state.stop === false)
+      {
+       this.setState(function (state, props) {
+        if(state.milisegundos >= 999)
+        {
+          this.setState({ 
+            milisegundos: 0
+          })
+        }
+          return({
+            milisegundos: state.milisegundos + 12 
+          })
+        })
+      }
+    }
 
 incrementarMinutos(){
     this.setState({minuto: this.state.minuto + 1})
@@ -86,26 +104,16 @@ pararTempo()
         
 }
 parciais(){
-    let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo
+    let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo+ ":" + this.state.milisegundos
         this.setState({
             parcial : this.state.parcial + "->" + p
         })
        
 }
 
-diferenca(){
-    let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo
-        this.setState({
-            diferenca : (this.state.hora +":" +this.state.minuto + ":" + this.state.segundo) 
-        })
-       
-}
-
-
- 
-
 componentDidMount(){
     this.timer =  setInterval( () => this.incrementar(), 1000)
+    this.timer2 = setInterval(() => this.functionMilisegundos(), 10)
 
 
 }
@@ -115,13 +123,14 @@ componentDidMount(){
 
  render(){
     return(
+
        <div className="Cronometro">
         <div class="container-fluid" >
             <div class="row">
                 <div class="col-md-3 sidebar cor-fundo">
                     <ul class="nav nav-sidebar">
                     <h1>Cronometro</h1>
-                    <h1>{this.state.hora}:{this.state.minuto}:{this.state.segundo}</h1>
+                    <h1>{this.state.hora}:{this.state.minuto}:{this.state.segundo}:{this.state.milisegundos}</h1>
                     <Botao onClick ={()=> { this.zerarCronometro()}} label ="Zerrar"/>
                     <Botao onClick ={()=> { this.pararTempo()}} label ={this.state.nameStop}/>
                     <Botao onClick ={()=> { this.parciais()}} label ="Parcial"/>
