@@ -1,8 +1,5 @@
 import React from 'react'
 import './App.css';
-import Botao from './Botao';
-import  LabelCronometro from './LabelCronometro' 
-import  LabelRelogio from './LabelRelogio'
 
 class Relogio extends React.Component{
     constructor(props){

@@ -1,6 +1,6 @@
 import React from 'react'
-import './App.css';
-import Botao from './Botao';
+
+
 
 
 class Home extends React.Component{
