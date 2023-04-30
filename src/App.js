@@ -12,12 +12,7 @@ function App() {
       <div id="cro">
         <Cronometro/>
         </div>
-        <div id="temp">
-        <Temporizador/>
-        </div>
-        <div>
-          <Relogio/>
-      </div>
+        
     </div>
   );
 }

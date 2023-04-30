@@ -82,6 +82,7 @@ incrementarHoras(){
 
 zerarCronometro(){
     this.setState({
+        milisegundos:0,
         segundo: 0,
         minuto: 0,
         hora : 0
@@ -104,7 +105,7 @@ pararTempo()
         
 }
 parciais(){
-    let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo+ ":" + this.state.milisegundos
+    let p =  this.state.hora +":" +this.state.minuto + ":" + this.state.segundo
         this.setState({
             parcial : this.state.parcial + "->" + p
         })
